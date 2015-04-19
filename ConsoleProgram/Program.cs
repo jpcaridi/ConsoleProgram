@@ -18,11 +18,34 @@ namespace ConsoleProgram
 
             var customers = modelContainer.Customers.ToList();
 
-            foreach (var c in customers)
+            foreach (Customer c in customers)
             {
-                Console.Out.WriteLine("Customer: " + c.Name);
-                Console.Out.WriteLine("Customer Address: " + c.Address);
+                Console.Out.WriteLine("Name: {0} Email: {1}", c.Name, c.Email);
+                Console.Out.WriteLine("Address: {0}", c.Address);
+
+                Account customerAccount = c.Account;
+                if (customerAccount != null)
+                {
+                    Console.Out.WriteLine("Account Creation: {0}\n", c.Account.CreationDate);
+
+                    if (c.Name.Equals("John Caridi"))
+                    {
+                        if (customerAccount.ShoppingCart == null)
+                        {
+                            customerAccount.ShoppingCart = new ShoppingCart { Account = customerAccount };
+                        }
+
+                        var products = modelContainer.Products.ToList();
+                        foreach (Product p in products)
+                        {
+                            if (!customerAccount.ShoppingCart.Products.Contains(p))
+                                customerAccount.ShoppingCart.Products.Add(p);
+                        }
+                    }
+                }
             }
+
+            modelContainer.SaveChanges();
 
             /*Account account = Account.CreateAccount(0, DateTime.Now);
             customer.Account = account;

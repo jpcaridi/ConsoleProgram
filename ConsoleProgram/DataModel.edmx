@@ -292,7 +292,7 @@
           <End Type="DataModel.Account" Role="Account" Multiplicity="1" >
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="DataModel.ShoppingCart" Role="ShoppingCart" Multiplicity="1" />
+          <End Type="DataModel.ShoppingCart" Role="ShoppingCart" Multiplicity="0..1" />
         </Association>
         <ComplexType Name="Address" >
           <Property Type="String" Name="Street" Nullable="false" />
@@ -378,6 +378,7 @@
       <EndProperty Name="ShoppingCart">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+            <Condition ColumnName="Account_Id" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="OrderProduct" TypeName="DataModel.OrderProduct" StoreEntitySet="OrderProduct">
       <EndProperty Name="Order">

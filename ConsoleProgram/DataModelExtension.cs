@@ -13,7 +13,7 @@ namespace ConsoleProgram
     {
         public override string ToString()
         {
-            return "" + this.Street + " " + this.City + " " + this.State + " " + this.PostalCode + " " + this.Country;
+            return "" + this.Street + " " + this.City + ", " + this.State + " " + this.PostalCode + " " + this.Country;
         }
     }
 }
