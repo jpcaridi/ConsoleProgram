@@ -47,23 +47,6 @@ namespace ConsoleProgram
 
             modelContainer.SaveChanges();
 
-            /*Account account = Account.CreateAccount(0, DateTime.Now);
-            customer.Account = account;
-            ShoppingCart cart = ShoppingCart.CreateShoppingCart(1);
-            account.ShoppingCart = cart;
-
-
-            Product car = Product.CreateProduct(123456, "Car");
-            cart.Products.Add(car);
-
-
-
-            account.Orders = new System.Data.Objects.DataClasses.EntityCollection<Order>();
-            account.Orders.Add(Order.CreateOrder(123, DateTime.Now, account.Id));
-
-            Console.Out.WriteLine("Account creation date: " + customer.Account.CreationDate);
-            Console.Out.WriteLine("Customer Address: " + customer.Address);*/
-
             connection.Close();
             Console.In.Read();
         }
